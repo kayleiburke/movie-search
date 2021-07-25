@@ -1,6 +1,7 @@
 class Movie
   extend ApiHelper
 
+  #TODO remove "data" attribute once code is complete (this is used for debugging)
   def self.attributes
     [:data, :poster, :plot, :title, :runtime, :rated, :year]
   end
@@ -18,17 +19,21 @@ class Movie
 
   def self.get_data(movie)
     @data = request_api(
-        base_api + "&i=#{URI.encode(movie["imdbID"])}"
+{
+            i: URI.encode(movie["imdbID"])
+        }
     )
-    @data
   end
 
   def self.retrieve_results(info={})
     movies = []
     total_movies = 0
 
-    results = self.request_api(
-        base_api + "&s=#{URI.encode(info[:movie])}&page=#{info[:page]}"
+    results = request_api(
+  {
+            s: URI.encode(info[:movie]),
+            page: info[:page]
+          }
     )
 
     if results && results["Search"]
@@ -41,14 +46,6 @@ class Movie
     end
 
     { movies: movies, total_movies: total_movies }
-  end
-
-  def self.request_api(url)
-    response = Excon.get(
-        url
-    )
-    return nil if response.status != 200
-    JSON.parse(response.body)
   end
 
 end
