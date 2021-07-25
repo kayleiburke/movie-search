@@ -1,5 +1,5 @@
 class Movie
-  include ActiveModel::Model
+  extend ApiHelper
 
   def self.attributes
     [:data, :poster, :plot, :title, :runtime, :rated, :year]
@@ -18,7 +18,7 @@ class Movie
 
   def self.get_data(movie)
     @data = request_api(
-        "http://www.omdbapi.com/?apikey=#{ENV.fetch('OMDB_API_KEY')}&i=#{URI.encode(movie["imdbID"])}"
+        base_api + "&i=#{URI.encode(movie["imdbID"])}"
     )
     @data
   end
@@ -28,7 +28,7 @@ class Movie
     total_movies = 0
 
     results = self.request_api(
-        "http://www.omdbapi.com/?apikey=#{ENV.fetch('OMDB_API_KEY')}&s=#{URI.encode(info[:movie])}&page=#{info[:page]}"
+        base_api + "&s=#{URI.encode(info[:movie])}&page=#{info[:page]}"
     )
 
     if results && results["Search"]
