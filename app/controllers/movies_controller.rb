@@ -1,4 +1,5 @@
 class MoviesController < ApplicationController
+  before_action { flash.clear }
 
   def index
     params[:movie] ||= ""
