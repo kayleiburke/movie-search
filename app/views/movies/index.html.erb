@@ -6,7 +6,7 @@
           <%= form_with(url: movies_path, method: 'get', remote: true) do %>
             <div class="form-group">
               <%= label_tag :movie, 'Search for a movie '%>
-              <%= text_field_tag :movie, nil, placeholder: 'Eg. Gone With the Wind', class: 'form-control' %>
+              <%= text_field_tag :movie, nil, placeholder: 'Eg. Gone With the Wind', class: 'form-control', value: params[:movie] %>
             </div>
             <%= button_tag 'Search', class: 'btn btn-success btn-block' %>
           <% end %>
@@ -38,7 +38,7 @@
   <div class="album py-5 bg-light">
     <div class="container">
 
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
         <% @movies.each do |movie| %>
           <div class="col">
           <div class="card shadow-sm">
@@ -46,10 +46,10 @@
             <%#= movie.data %>
 
             <% if movie.poster != "N/A" %>
-              <img src="<%= movie.poster %>" width="100%" height="100%"  />
+              <img class="card-img-top" src="<%= movie.poster %>" width="100%" height="100%"  />
             <% else %>
               <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: No Image Available" preserveAspectRatio="xMidYMid slice" focusable="false"><title>No Image Available</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">No Image Available</text></svg>
-          <% end %>
+            <% end %>
 
             <div class="card-body">
               <div class="btn-group">
@@ -68,6 +68,10 @@
           </div>
         </div>
         <% end %>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row row-cols-1">
         <!-- show pagination -->
         <%= paginate @movies, theme: 'twitter-bootstrap-4' %>
       </div>
