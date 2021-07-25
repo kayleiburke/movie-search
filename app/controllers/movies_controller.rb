@@ -1,18 +1,14 @@
 class MoviesController < ApplicationController
   def index
-    movies = find_movie(params[:movie])
-    unless movies
+    params[:movie] ||= ""
+
+    movies = Movie.retrieve_results(params[:movie])
+    unless movies && movies["Search"]
       flash[:alert] = 'Movie not found'
       @movies = []
-    end
-    @movies = movies
-  end
-
-  def search
-    movies = find_movie(params[:movie])
-    unless movies
-      flash[:alert] = 'Movie not found'
-      return render action: :index
+    else
+      @raw = movies
+      @movies = movies["Search"]
     end
   end
 
@@ -30,7 +26,7 @@ class MoviesController < ApplicationController
     if name
       # ENV.fetch('OMDB_API_KEY')
       request_api(
-              "http://www.omdbapi.com/?i=tt3896198&apikey=11e15d8d&s=#{URI.encode(name)}"
+              "http://www.omdbapi.com/?apikey=#{ENV.fetch('OMDB_API_KEY')}&s=#{URI.encode(name)}"
       )
     else
       nil
