@@ -23,10 +23,12 @@ class Movie
     @data
   end
 
-  def self.retrieve_results(name)
+  def self.retrieve_results(info={})
     movies = []
+    total_movies = 0
+
     results = self.request_api(
-        "http://www.omdbapi.com/?apikey=#{ENV.fetch('OMDB_API_KEY')}&s=#{URI.encode(name)}"
+        "http://www.omdbapi.com/?apikey=#{ENV.fetch('OMDB_API_KEY')}&s=#{URI.encode(info[:movie])}&page=#{info[:page]}"
     )
 
     if results && results["Search"]
@@ -34,9 +36,11 @@ class Movie
         movie_data = Movie.get_data(result)
         movies.push(Movie.new(movie_data))
       end
+
+      total_movies = results["totalResults"].to_i rescue movies.size
     end
 
-    movies
+    { movies: movies, total_movies: total_movies }
   end
 
   def self.request_api(url)
