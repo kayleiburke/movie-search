@@ -13,6 +13,7 @@ class MoviesController < ApplicationController
     end
 
     @movies = Kaminari.paginate_array(@movies, total_count: movie_results[:total_movies]).page(params[:page]).per(10)
+    @total_movies = movie_results[:total_movies]
 
   end
 

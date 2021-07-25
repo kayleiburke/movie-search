@@ -71,9 +71,14 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12 mt-5">
-            <div class="text-center">
-              <%= paginate @movies, theme: 'twitter-bootstrap-4' %>
+
+            <div class="pagination container justify-content-center" >
+              <%= paginate @movies, theme: 'twitter-bootstrap-4', pagination_class: "pagination-md" %>
             </div>
+
+          </div>
+          <div class="pull-right">
+            <%= @total_movies %> total results
           </div>
         </div>
       </div>
