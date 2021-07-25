@@ -41,12 +41,12 @@
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
         <% @movies.each do |movie| %>
           <div class="col">
-          <div class="card shadow-sm">
+          <div class="card shadow-sm" style="height:600px;overflow:auto;">
 
             <%#= movie.data %>
 
             <% if movie.poster != "N/A" %>
-              <img class="card-img-top" src="<%= movie.poster %>" width="100%" height="100%"  />
+              <img class="card-img-top" src="<%= movie.poster %>" width="100%"  />
             <% else %>
               <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: No Image Available" preserveAspectRatio="xMidYMid slice" focusable="false"><title>No Image Available</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">No Image Available</text></svg>
             <% end %>
