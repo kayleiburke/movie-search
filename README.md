@@ -8,4 +8,5 @@ Build a basic, functioning application that consumes the [OMDB api](https://www.
 6. Parse and display the details.
 
 ## Demo Site
-A live demo of the site can be found at https://omdb-database-search-demo.herokuapp.com/
+A live demo of the completed site can be found at https://omdb-database-search-demo.herokuapp.com/
+
