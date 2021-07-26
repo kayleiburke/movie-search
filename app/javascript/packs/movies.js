@@ -1,6 +1,6 @@
 // set the size of all poster images equal to the heighth of the tallest poster
 changePosterSizes = function(){
-    var movie_posters = document.getElementsByClassName("movie-poster");
+    var movie_posters = document.getElementsByClassName("movie-poster-img");
     var max_height = Math.max.apply(Math, Array.from(movie_posters).map(function(poster) { return poster.clientHeight; }));
 
     if (max_height > 0) {

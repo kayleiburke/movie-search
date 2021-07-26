@@ -17,4 +17,8 @@ class MoviesController < ApplicationController
 
   end
 
+  def show
+    @movie = Movie.get_movie_data(params[:id])
+  end
+
 end

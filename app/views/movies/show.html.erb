@@ -1,0 +1,33 @@
+<header class="d-flex justify-content-center py-3 bg-dark text-white">
+</header>
+
+<div class="container col-xxl-8 px-4 py-5">
+  <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+    <div class="col-lg-8">
+
+      <div class="card-body">
+        <div class="btn-group">
+          <small class="text-muted"><%= @movie.year %></small>
+        </div>
+        <h2><%= @movie.title %></h2>
+        <p class="card-text"><%= @movie.plot %></p>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="btn-group">
+            <small class="text-muted"><%= @movie.runtime %></small>
+          </div>
+          <small class="text-muted"><%= @movie.rated %></small>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-10 col-sm-8 col-lg-4">
+      <% if @movie.poster != "N/A" %>
+        <img src="<%= @movie.poster %>" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+      <% else %>
+        <img class="d-block mx-lg-auto img-fluid" src="assets/images/movie-reel.jpeg" width="700" height="500" />
+        <div class="text-overlay-centered h4"><%= @movie.title %></div>
+      <% end %>
+    </div>
+
+  </div>
+</div>

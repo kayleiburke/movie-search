@@ -39,32 +39,20 @@
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
           <% @movies.each do |movie| %>
             <div class="col">
-            <div class="card shadow-sm" style="height:400px;overflow:auto;background-color:lightgray">
+              <%= link_to movie_path(movie.imdbID) do %>
+                <div class="card shadow-sm movie-poster-card" style="height:400px;overflow:auto;background-color:lightgray">
 
-              <div class="d-flex align-items-center" style="height:400px;">
-                <% if movie.poster != "N/A" %>
-                  <img class="card-img-top movie-poster" src="<%= movie.poster %>" width="100%"  />
-                <% else %>
-                  <img class="card-img-top movie-poster" src="assets/movie-reel.jpeg"/>
-                  <div class="text-overlay-centered h4"><%= movie.title %></div>
-                <% end %>
-              </div>
-
-              <!--<div class="card-body">
-                <div class="btn-group">
-                  <small class="text-muted"><%#= movie.year %></small>
-                </div>
-                <h2><%#= movie.title %></h2>
-                <p class="card-text"><%#= movie.plot %></p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <small class="text-muted"><%#= movie.runtime %></small>
+                  <div class="d-flex align-items-center" style="height:400px;">
+                    <% if movie.poster != "N/A" %>
+                      <img class="card-img-top movie-poster-img" src="<%= movie.poster %>" width="100%"  />
+                    <% else %>
+                      <img class="card-img-top movie-poster-img" src="assets/movie-reel.jpeg" />
+                      <div class="text-overlay-centered h4"><%= movie.title %></div>
+                    <% end %>
                   </div>
-                  <small class="text-muted"><%#= movie.rated %></small>
                 </div>
-              </div>-->
+              <% end %>
             </div>
-          </div>
           <% end %>
         </div>
       </div>

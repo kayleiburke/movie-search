@@ -3,7 +3,7 @@ class Movie
 
   #TODO remove "data" attribute once code is complete (this is used for debugging)
   def self.attributes
-    [:data, :poster, :plot, :title, :runtime, :rated, :year]
+    [:data, :poster, :plot, :title, :runtime, :rated, :year, :imdbID]
   end
 
   attr_accessor *self.attributes
@@ -11,18 +11,21 @@ class Movie
   def initialize(data)
     if data
       Movie.attributes.each do |attr|
-        instance_variable_set("@#{attr}", data[attr.capitalize.to_s])
+        val = data[attr.to_s] ? data[attr.to_s] : data[attr.capitalize.to_s]
+        instance_variable_set("@#{attr}", val)
       end
       @data = data
     end
   end
 
-  def self.get_movie_data(movie)
-    @data = request_api(
+  def self.get_movie_data(id)
+    movie_data = request_api(
 {
-            i: URI.encode(movie["imdbID"])
+            i: URI.encode(id),
+            plot: "full"
         }
     )
+    Movie.new(movie_data)
   end
 
   def self.retrieve_results(info={})
