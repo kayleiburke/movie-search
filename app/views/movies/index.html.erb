@@ -39,30 +39,30 @@
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
           <% @movies.each do |movie| %>
             <div class="col">
-            <div class="card shadow-sm" style="height:600px;overflow:auto;">
+            <div class="card shadow-sm" style="height:400px;overflow:auto;background-color:lightgray">
 
-              <%#= movie.data %>
+              <div class="d-flex align-items-center" style="height:400px;">
+                <% if movie.poster != "N/A" %>
+                  <img class="card-img-top movie-poster" src="<%= movie.poster %>" width="100%"  />
+                <% else %>
+                  <img class="card-img-top movie-poster" src="assets/movie-reel.jpeg"/>
+                  <div class="text-overlay-centered h4"><%= movie.title %></div>
+                <% end %>
+              </div>
 
-              <% if movie.poster != "N/A" %>
-                <img class="card-img-top" src="<%= movie.poster %>" width="100%"  />
-              <% else %>
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: No Image Available" preserveAspectRatio="xMidYMid slice" focusable="false"><title>No Image Available</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">No Image Available</text></svg>
-              <% end %>
-
-              <div class="card-body">
+              <!--<div class="card-body">
                 <div class="btn-group">
-                  <small class="text-muted"><%= movie.year %></small>
+                  <small class="text-muted"><%#= movie.year %></small>
                 </div>
-                <h2><%= movie.title %></h2>
-                <!--<p><%#= movie.data %></p>-->
-                <p class="card-text"><%= movie.plot %></p>
+                <h2><%#= movie.title %></h2>
+                <p class="card-text"><%#= movie.plot %></p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <small class="text-muted"><%= movie.runtime %></small>
+                    <small class="text-muted"><%#= movie.runtime %></small>
                   </div>
-                  <small class="text-muted"><%= movie.rated %></small>
+                  <small class="text-muted"><%#= movie.rated %></small>
                 </div>
-              </div>
+              </div>-->
             </div>
           </div>
           <% end %>
@@ -85,4 +85,5 @@
     </div>
   <% end %>
 
+  <%= javascript_pack_tag 'movies' %>
 </main>
