@@ -21,7 +21,7 @@ class Movie
   def self.get_movie_data(id)
     movie_data = request_api(
 {
-            i: URI.encode(id),
+            i: CGI.escape(id),
             plot: "full"
         }
     )
@@ -34,7 +34,7 @@ class Movie
 
     results = request_api(
   {
-            s: URI.encode(info[:movie]),
+            s: CGI.escape(info[:movie]),
             page: info[:page]
           }
     )
