@@ -1,9 +1,8 @@
 class Movie
   extend ApiHelper
 
-  #TODO remove "data" attribute once code is complete (this is used for debugging)
   def self.attributes
-    [:data, :poster, :plot, :title, :runtime, :rated, :year, :imdbID]
+    [:poster, :plot, :title, :runtime, :rated, :year, :imdbID]
   end
 
   attr_accessor *self.attributes
@@ -14,7 +13,6 @@ class Movie
         val = data[attr.to_s] ? data[attr.to_s] : data[attr.capitalize.to_s]
         instance_variable_set("@#{attr}", val)
       end
-      @data = data
     end
   end
 
