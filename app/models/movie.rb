@@ -17,7 +17,7 @@ class Movie
     end
   end
 
-  def self.get_data(movie)
+  def self.get_movie_data(movie)
     @data = request_api(
 {
             i: URI.encode(movie["imdbID"])
@@ -38,8 +38,7 @@ class Movie
 
     if results && results["Search"]
       results["Search"].each do |result|
-        movie_data = Movie.get_data(result)
-        movies.push(Movie.new(movie_data))
+        movies.push(Movie.new(result))
       end
 
       total_movies = results["totalResults"].to_i rescue movies.size
