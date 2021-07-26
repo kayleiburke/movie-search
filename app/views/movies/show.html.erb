@@ -24,15 +24,14 @@
       <% if @movie.poster != "N/A" %>
         <img src="<%= @movie.poster %>" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
       <% else %>
-        <img class="d-block mx-lg-auto img-fluid" src="assets/images/movie-reel.jpeg" width="700" height="500" />
-        <div class="text-overlay-centered h4"><%= @movie.title %></div>
+        <img class="d-block mx-lg-auto img-fluid" src="../assets/movie-reel.jpeg" width="700" height="500" />
       <% end %>
     </div>
 
     <div class="d-flex justify-content-between align-items-center">
       <div class="btn-group">
       </div>
-      <%= button_to "Back", movies_path, method: 'get', params: { movie: @search_term, page: @page }, class: "btn btn-outline-secondary btn-lg"%>
+      <%= button_to "Back", movies_path, method: 'get', params: { movie: params[:search_term], page: params[:page] }, class: "btn btn-outline-secondary btn-lg"%>
     </div>
   </div>
 </div>
