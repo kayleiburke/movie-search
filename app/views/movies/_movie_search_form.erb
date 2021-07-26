@@ -1,0 +1,20 @@
+<div class="row py-lg-5">
+  <div class="col-lg-6 col-md-8 mx-auto">
+    <h1 class="fw-light">OMDB Database Search</h1>
+    <p class="lead text-muted">
+      Search for a movie by name
+    </p>
+    <div class="mx-auto" style="width: 400px">
+      <%= form_with(url: movies_path, method: 'get', remote: true) do %>
+        <div class="input-group input-group-md">
+          <%= text_field_tag :movie, params[:movie], class: 'form-control', placeholder: "Search by Name" %>
+          <span style="padding:0px 0px 0px 0px !important" class="input-group-addon">
+            <%= button_tag type: "submit", class: "btn btn-primary" do %>
+              <i class="fa fa-search"></i>
+            <% end %>
+            </span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

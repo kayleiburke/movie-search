@@ -1,26 +1,7 @@
 <main>
 
   <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">OMDB Database Search</h1>
-        <p class="lead text-muted">
-          Search for a movie by name
-        </p>
-        <div class="mx-auto" style="width: 400px">
-          <%= form_with(url: movies_path, method: 'get', remote: true) do %>
-            <div class="input-group input-group-md">
-              <%= text_field_tag :movie, params[:movie], class: 'form-control', placeholder: "Search by Name" %>
-              <span style="padding:0px 0px 0px 0px !important" class="input-group-addon">
-            <%= button_tag type: "submit", class: "btn btn-primary" do %>
-              <i class="fa fa-search"></i>
-            <% end %>
-            </span>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
+    <%= render partial: 'movie_search_form' %>
     <% if flash[:alert] %>
       <div class="row">
         <div class="col-lg-12 mt-5">
@@ -38,21 +19,7 @@
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
           <% @movies.each do |movie| %>
-            <div class="col">
-              <%= link_to movie_path(movie.imdbID, search_term: params[:movie], page: params[:page]) do %>
-                <div class="card shadow-sm movie-poster-card" style="height:400px;overflow:auto;background-color:lightgray">
-
-                  <div class="d-flex align-items-center" style="height:400px;">
-                    <% if movie.poster != "N/A" %>
-                      <img class="card-img-top movie-poster-img" src="<%= movie.poster %>" width="100%"  />
-                    <% else %>
-                      <img class="card-img-top movie-poster-img" src="<%= asset_path("movie-reel.jpeg") %>" />
-                      <div class="text-overlay-centered h4"><%= movie.title %></div>
-                    <% end %>
-                  </div>
-                </div>
-              <% end %>
-            </div>
+            <%= render partial: 'movie', locals: { movie: movie } %>
           <% end %>
         </div>
       </div>

@@ -1,0 +1,15 @@
+<div class="col">
+  <%= link_to movie_path(movie.imdbID, search_term: params[:movie], page: params[:page]) do %>
+    <div class="card shadow-sm movie-poster-card" style="height:400px;overflow:auto;background-color:lightgray">
+
+      <div class="d-flex align-items-center" style="height:400px;">
+        <% if movie.poster != "N/A" %>
+          <img class="card-img-top movie-poster-img" src="<%= movie.poster %>" width="100%"  />
+        <% else %>
+          <img class="card-img-top movie-poster-img" src="<%= asset_path("movie-reel.jpeg") %>" />
+          <div class="text-overlay-centered h4"><%= movie.title %></div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
