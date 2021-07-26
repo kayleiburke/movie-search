@@ -19,6 +19,8 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.get_movie_data(params[:id])
+    @search_term = params[:search_term]
+    @page = params[:page]
   end
 
 end

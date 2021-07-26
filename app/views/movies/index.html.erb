@@ -39,7 +39,7 @@
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
           <% @movies.each do |movie| %>
             <div class="col">
-              <%= link_to movie_path(movie.imdbID) do %>
+              <%= link_to movie_path(movie.imdbID, search_term: params[:movie], page: params[:page]) do %>
                 <div class="card shadow-sm movie-poster-card" style="height:400px;overflow:auto;background-color:lightgray">
 
                   <div class="d-flex align-items-center" style="height:400px;">

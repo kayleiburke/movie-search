@@ -29,5 +29,10 @@
       <% end %>
     </div>
 
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="btn-group">
+      </div>
+      <%= button_to "Back", movies_path, method: 'get', params: { movie: @search_term, page: @page }, class: "btn btn-outline-secondary btn-lg"%>
+    </div>
   </div>
 </div>
