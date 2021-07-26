@@ -46,7 +46,7 @@
                     <% if movie.poster != "N/A" %>
                       <img class="card-img-top movie-poster-img" src="<%= movie.poster %>" width="100%"  />
                     <% else %>
-                      <img class="card-img-top movie-poster-img" src="assets/movie-reel.jpeg" />
+                      <img class="card-img-top movie-poster-img" src="<%= asset_path("movie-reel.jpeg") %>" />
                       <div class="text-overlay-centered h4"><%= movie.title %></div>
                     <% end %>
                   </div>
