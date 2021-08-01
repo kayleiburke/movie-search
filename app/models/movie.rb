@@ -1,5 +1,8 @@
 class Movie
+  include ActiveModel::Validations
   extend ApiHelper
+
+  validates :title, presence: true
 
   def self.attributes
     [:poster, :plot, :title, :runtime, :rated, :year, :imdbID]
@@ -55,7 +58,7 @@ class Movie
 
   def is_empty?
     Movie.attributes.select do |attr|
-      instance_variable_get("@#{attr}") != nil unless attr == 'title'
+      instance_variable_get("@#{attr}") != nil unless attr == :title
     end.size == 0
   end
 
