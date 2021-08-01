@@ -21,7 +21,7 @@
 
     </div>
     <div class="col-10 col-sm-8 col-lg-4">
-      <% if @movie.poster != "N/A" %>
+      <% if @movie.poster %>
         <img src="<%= @movie.poster %>" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
       <% else %>
         <img class="d-block mx-lg-auto img-fluid" src="<%= asset_path("movie-reel.jpeg") %>" width="700" height="500" />

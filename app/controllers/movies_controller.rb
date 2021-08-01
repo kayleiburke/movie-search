@@ -27,6 +27,10 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.get_movie_data(params[:id])
+
+    if @movie.poster == "N/A"
+      @movie.poster = nil
+    end
   end
 
 end

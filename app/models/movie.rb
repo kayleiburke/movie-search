@@ -11,6 +11,11 @@ class Movie
     if data
       Movie.attributes.each do |attr|
         val = data[attr.to_s] ? data[attr.to_s] : data[attr.capitalize.to_s]
+
+        if attr == :title
+          val ||= "No title found"
+        end
+
         instance_variable_set("@#{attr}", val)
       end
     end
@@ -46,6 +51,12 @@ class Movie
     end
 
     { movies: movies, total_movies: total_movies }
+  end
+
+  def is_empty?
+    Movie.attributes.select do |attr|
+      instance_variable_get("@#{attr}") != nil unless attr == 'title'
+    end.size == 0
   end
 
 end

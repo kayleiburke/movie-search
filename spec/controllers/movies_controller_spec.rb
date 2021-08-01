@@ -62,4 +62,39 @@ RSpec.describe MoviesController, type: :controller do
       end
     end
   end
+
+  describe "GET /show" do
+    context "with valid id" do
+      let(:params) { { id: 'tt0460792' } }
+
+      it "renders the :show page" do
+        get :show, params: params
+        response.should render_template :show
+      end
+
+      it "returns a Movie object" do
+        get :show, params: params
+        expect(assigns(:movie)).to be_a(Movie)
+      end
+
+      it "has a movie poster" do
+        get :show, params: params
+        expect(assigns(:movie).poster).to be_a(String)
+      end
+    end
+
+    context "with invalid id" do
+      let(:params) { { id: 'bad_id' } }
+
+      it "renders the :show page" do
+        get :show, params: params
+        response.should render_template :show
+      end
+
+      it "returns empty movie" do
+        get :show, params: params
+        expect(assigns(:movie).is_empty?).to eq(true)
+      end
+    end
+  end
 end
