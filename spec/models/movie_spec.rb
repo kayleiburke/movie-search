@@ -49,8 +49,4 @@ RSpec.describe Movie, type: :model do
     subject.imdbID = nil
     expect(subject).to be_valid
   end
-
-  it "is not valid without a description"
-  it "is not valid without a start_date"
-  it "is not valid without a end_date"
 end

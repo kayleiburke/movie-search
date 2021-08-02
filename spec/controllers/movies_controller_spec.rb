@@ -91,9 +91,14 @@ RSpec.describe MoviesController, type: :controller do
         response.should render_template :show
       end
 
-      it "returns empty movie" do
+      it "returns an empty movie object" do
         get :show, params: params
         expect(assigns(:movie).is_empty?).to eq(true)
+      end
+
+      it "returns a movie with a title of 'Title not found'" do
+        get :show, params: params
+        expect(assigns(:movie).title).to eq("Title not found")
       end
     end
   end
