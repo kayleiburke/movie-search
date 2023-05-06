@@ -33,6 +33,8 @@ gem 'bootstrap-sass'
 gem 'kaminari'
 gem 'bootstrap4-kaminari-views'
 
+gem 'font-awesome-sass'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
