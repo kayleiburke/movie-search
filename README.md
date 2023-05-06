@@ -2,7 +2,7 @@
 A Ruby on Rails application that allows the user to perform searches against the [OMDB api](https://www.omdbapi.com/).  OMDB is an open source movie database containing over 280,000 movies.  
 
 ## Project Specifications
-The specifications for this project were as follows:
+This project was created as part of a job interview process. The specifications for this project were as follows:
 
 > Build a basic, functioning application that consumes the [OMDB api](https://www.omdbapi.com/). Specifically, it should do the following:
 > 
