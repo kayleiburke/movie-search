@@ -28,6 +28,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'image_processing', '~> 1.2'
 
 # pagination with bootstrap formatting
+gem 'bootstrap', '~> 5.1.3'
 gem 'bootstrap-sass'
 gem 'kaminari'
 gem 'bootstrap4-kaminari-views'
