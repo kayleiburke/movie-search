@@ -37,13 +37,6 @@ module.exports = function(api) {
       ]
     ].filter(Boolean),
     plugins: [
-      // existing plugins...
-      [
-        '@babel/plugin-proposal-class-properties',
-        {
-          loose: true
-        }
-      ],
       [
         '@babel/plugin-proposal-private-property-in-object',
         {
